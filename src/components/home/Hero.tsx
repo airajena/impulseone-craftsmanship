@@ -45,7 +45,7 @@ export const Hero = () => {
               size="lg"
               className="bg-gradient-primary text-primary-foreground hover:opacity-90 shadow-glow group text-base"
             >
-              <Link to="/#contact">
+              <Link to="/contact">
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -56,10 +56,10 @@ export const Hero = () => {
               variant="outline"
               className="border-2 text-base"
             >
-              <a href="#contact">
+              <Link to="/contact">
                 <Calendar className="mr-2 h-5 w-5" />
                 Get a Free Consultation
-              </a>
+              </Link>
             </Button>
           </div>
 

@@ -57,18 +57,18 @@ export const Portfolio = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 md:grid-rows-3 gap-4 mb-12 animate-fade-in-up">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 animate-fade-in-up">
             {projects.map((project) => (
               <Link
                 key={project.id}
                 to={`/projects/${project.id}`}
-                className={`group relative overflow-hidden rounded-2xl ${project.span} h-64 md:h-auto`}
+                className="group relative overflow-hidden rounded-2xl h-80 hover:shadow-xl transition-all duration-300"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                   style={{ backgroundImage: `url(${project.image})` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <span className="text-primary text-sm font-medium mb-2">
                     {project.category}

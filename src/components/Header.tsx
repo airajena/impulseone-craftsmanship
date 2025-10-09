@@ -19,11 +19,11 @@ export const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/#about" },
-    { name: "Services", path: "/#services" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
     { name: "Projects", path: "/projects" },
     { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/#contact" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => {
@@ -70,7 +70,7 @@ export const Header = () => {
               asChild
               className="hidden md:inline-flex bg-gradient-primary text-primary-foreground hover:opacity-90"
             >
-              <Link to="/#contact">Get Started</Link>
+              <Link to="/contact">Get Started</Link>
             </Button>
 
             <Button
@@ -106,7 +106,7 @@ export const Header = () => {
               asChild
               className="bg-gradient-primary text-primary-foreground mt-2"
             >
-              <Link to="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 Get Started
               </Link>
             </Button>
