@@ -15,9 +15,9 @@ export const Blog = () => {
   const posts = [
     {
       id: 1,
-      title: "Building Scalable Microservices Architecture",
-      category: "Development",
-      excerpt: "Learn how to design and implement a microservices architecture that scales with your business needs.",
+      title: "How to Choose the Right Software Development Partner for Your Startup (2025 Guide)",
+      category: "Business Strategy",
+      excerpt: "Selecting the right development partner can make or break your startup. Here's everything you need to know.",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
       author: "Alex Thompson",
       date: "Mar 15, 2024",
@@ -25,9 +25,9 @@ export const Blog = () => {
     },
     {
       id: 2,
-      title: "Modern UI/UX Design Principles",
-      category: "Design",
-      excerpt: "Discover the essential design principles that create exceptional user experiences in modern web applications.",
+      title: "End-to-End Web App Development: From Idea to Scalable Product",
+      category: "Development",
+      excerpt: "A complete guide to building production-ready web applications from scratch with best practices.",
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
       author: "Jessica Martinez",
       date: "Mar 12, 2024",
@@ -35,9 +35,9 @@ export const Blog = () => {
     },
     {
       id: 3,
-      title: "DevOps Best Practices for 2024",
-      category: "DevOps",
-      excerpt: "Essential DevOps practices and tools to streamline your development workflow and improve deployment efficiency.",
+      title: "Why Scalable Backend Architecture is the Key to Startup Growth",
+      category: "Backend",
+      excerpt: "Your backend architecture determines how far your startup can scale. Learn why it matters from the start.",
       image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80",
       author: "Ryan Park",
       date: "Mar 10, 2024",
