@@ -10,56 +10,56 @@ export const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "SaaS", "E-commerce", "FinTech", "Healthcare", "Real Estate"];
+  const categories = ["All", "Healthcare & MedTech", "FinTech / Banking", "E-Commerce & Retail", "SaaS & B2B Platforms", "EdTech & E-Learning", "Real Estate & PropTech"];
 
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      category: "E-commerce",
-      description: "Modern online shopping platform with advanced filtering, payment integration, and inventory management.",
+      title: "AI-Powered Patient Management System",
+      category: "Healthcare & MedTech",
+      description: "Comprehensive AI-powered patient management system streamlining healthcare operations with intelligent automation.",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+      tech: ["React", "Spring Boot", "AWS", "Docker"],
+    },
+    {
+      id: 2,
+      title: "Real-Time Banking Platform",
+      category: "FinTech / Banking",
+      description: "Enterprise-grade financial analytics platform with real-time portfolio monitoring and automated trading.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      tech: ["React", "GraphQL", "AWS", "PostgreSQL"],
+    },
+    {
+      id: 3,
+      title: "Omnichannel E-Commerce Platform",
+      category: "E-Commerce & Retail",
+      description: "High-performance e-commerce platform with AI recommendations and real-time inventory management.",
       image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
       tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
     },
     {
-      id: 2,
-      title: "FinTech Dashboard",
-      category: "FinTech",
-      description: "Real-time financial analytics dashboard with data visualization and portfolio management.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      tech: ["React", "TypeScript", "GraphQL", "AWS"],
-    },
-    {
-      id: 3,
-      title: "Healthcare Portal",
-      category: "Healthcare",
-      description: "Patient management system with appointment scheduling, medical records, and telemedicine features.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-      tech: ["Vue.js", "Spring Boot", "MySQL", "Docker"],
-    },
-    {
       id: 4,
-      title: "SaaS Analytics Tool",
-      category: "SaaS",
-      description: "Comprehensive analytics platform with custom reporting, user tracking, and API integrations.",
+      title: "Enterprise SaaS Analytics Platform",
+      category: "SaaS & B2B Platforms",
+      description: "Data-driven analytics platform with 100+ integrations and AI-powered insights for enterprise clients.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      tech: ["Next.js", "Node.js", "MongoDB", "Redis"],
+      tech: ["React", "Python", "PostgreSQL", "Kubernetes"],
     },
     {
       id: 5,
-      title: "Real Estate Platform",
-      category: "Real Estate",
-      description: "Property listing and management platform with virtual tours, mortgage calculator, and CRM.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-      tech: ["React", "Express", "PostgreSQL", "AWS S3"],
+      title: "Interactive Learning Management System",
+      category: "EdTech & E-Learning",
+      description: "Comprehensive LMS combining live classes, self-paced courses, and AI-powered personalized learning paths.",
+      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
+      tech: ["React", "Node.js", "MongoDB", "WebRTC"],
     },
     {
       id: 6,
-      title: "CRM Solution",
-      category: "SaaS",
-      description: "Customer relationship management tool with sales pipeline, email automation, and reporting.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-      tech: ["Angular", "Java", "Spring Boot", "Kubernetes"],
+      title: "Smart Property Management Platform",
+      category: "Real Estate & PropTech",
+      description: "All-in-one property management platform with virtual tours, automated rent collection, and maintenance tracking.",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+      tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
     },
   ];
 
