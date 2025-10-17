@@ -10,7 +10,7 @@ export const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "Development", "Design", "DevOps", "Cloud", "Best Practices"];
+  const categories = ["All", "Business Strategy", "Development", "Backend", "DevOps", "Cloud", "Best Practices", "Security"];
 
   const posts = [
     {
@@ -45,9 +45,9 @@ export const Blog = () => {
     },
     {
       id: 4,
-      title: "Cloud Migration Strategies",
+      title: "Cloud vs On-Premise: Which Infrastructure is Best for Your Business in 2025?",
       category: "Cloud",
-      excerpt: "A comprehensive guide to planning and executing a successful cloud migration for your applications.",
+      excerpt: "A detailed comparison to help you choose the right infrastructure strategy for your business needs.",
       image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
       author: "Sophie Anderson",
       date: "Mar 8, 2024",
@@ -55,23 +55,63 @@ export const Blog = () => {
     },
     {
       id: 5,
-      title: "React Performance Optimization",
+      title: "The Ultimate Guide to Building a SaaS Product: Tech Stack, Cost & Timeline",
       category: "Development",
-      excerpt: "Advanced techniques to optimize React applications for better performance and user experience.",
+      excerpt: "Everything you need to know about building a successful SaaS product from the ground up.",
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
       author: "Alex Thompson",
       date: "Mar 5, 2024",
-      readTime: "7 min read",
+      readTime: "15 min read",
     },
     {
       id: 6,
-      title: "Security Best Practices for Web Apps",
+      title: "Top 7 Mistakes Businesses Make When Outsourcing Software Development",
       category: "Best Practices",
-      excerpt: "Essential security measures every developer should implement to protect web applications from threats.",
+      excerpt: "Learn from common pitfalls and make smarter decisions when outsourcing your development work.",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
       author: "Ryan Park",
       date: "Mar 3, 2024",
       readTime: "9 min read",
+    },
+    {
+      id: 7,
+      title: "Frontend vs Backend vs Infrastructure: Understanding the Full Stack for Business Owners",
+      category: "Development",
+      excerpt: "Demystifying the different layers of web development for non-technical founders and business owners.",
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+      author: "Jessica Martinez",
+      date: "Mar 1, 2024",
+      readTime: "8 min read",
+    },
+    {
+      id: 8,
+      title: "How DevOps & Automation Save Startups Time and Money",
+      category: "DevOps",
+      excerpt: "Discover how modern DevOps practices can dramatically reduce costs and accelerate your development cycle.",
+      image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80",
+      author: "Sophie Anderson",
+      date: "Feb 28, 2024",
+      readTime: "10 min read",
+    },
+    {
+      id: 9,
+      title: "Case Study: How We Scaled a Web App to Handle 1 Million Users",
+      category: "Best Practices",
+      excerpt: "A real-world case study of scaling challenges, solutions, and lessons learned from handling massive growth.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      author: "Alex Thompson",
+      date: "Feb 26, 2024",
+      readTime: "14 min read",
+    },
+    {
+      id: 10,
+      title: "Why Security & Performance Optimization Should Be a Priority in 2025 Web Apps",
+      category: "Security",
+      excerpt: "Security breaches and slow performance can kill your business. Here's why they must be priorities from day one.",
+      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+      author: "Ryan Park",
+      date: "Feb 24, 2024",
+      readTime: "11 min read",
     },
   ];
 
