@@ -42,10 +42,15 @@ const BlogPost = () => {
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const fullHeight = document.documentElement.scrollHeight;
       const scrolled = window.scrollY;
-      const progress = (scrolled / documentHeight) * 100;
-      setReadProgress(Math.min(progress, 100));
+      const scrollableHeight = fullHeight - windowHeight;
+      
+      if (scrollableHeight > 0) {
+        const progress = (scrolled / scrollableHeight) * 100;
+        setReadProgress(Math.min(Math.max(progress, 0), 100));
+      }
+      
       setShowScrollTop(scrolled > 400);
 
       // Update active heading for TOC
@@ -60,7 +65,8 @@ const BlogPost = () => {
       setActiveHeading(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -164,14 +170,14 @@ const BlogPost = () => {
   const BlogContent = () => (
     <div className="space-y-8" ref={contentRef}>
       {/* Introduction */}
-      <div className="animate-fade-in">
+      <div>
         <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
           In today's digital landscape, building web applications that can scale from a handful of users to millions is both an art and a science. This comprehensive guide will walk you through the essential patterns, technologies, and practices that power the world's most successful web platforms.
         </p>
       </div>
 
       {/* Callout Box */}
-      <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg flex gap-4 animate-fade-in">
+      <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg flex gap-4">
         <Lightbulb className="h-6 w-6 text-accent shrink-0 mt-1" />
         <div>
           <h4 className="font-semibold text-foreground mb-2">Key Takeaway</h4>
@@ -182,7 +188,7 @@ const BlogPost = () => {
       </div>
 
       {/* Section 1 */}
-      <div className="space-y-6 animate-fade-in">
+      <div className="space-y-6">
         <h2 id="understanding-scalability" className="text-3xl md:text-4xl font-bold text-foreground scroll-mt-24">
           Understanding Scalability
         </h2>
@@ -213,7 +219,7 @@ const BlogPost = () => {
       </div>
 
       {/* Code Example */}
-      <div className="space-y-4 animate-fade-in">
+      <div className="space-y-4">
         <h3 id="architecture-patterns" className="text-2xl md:text-3xl font-bold text-foreground scroll-mt-24">
           Modern Architecture Patterns
         </h3>
@@ -255,7 +261,7 @@ const BlogPost = () => {
       </div>
 
       {/* Image with Caption */}
-      <figure className="space-y-3 animate-fade-in">
+      <figure className="space-y-3">
         <div className="rounded-xl overflow-hidden border border-border">
           <img 
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" 
@@ -269,7 +275,7 @@ const BlogPost = () => {
       </figure>
 
       {/* Video Embed */}
-      <div className="space-y-4 animate-fade-in">
+      <div className="space-y-4">
         <h3 id="database-optimization" className="text-2xl md:text-3xl font-bold text-foreground scroll-mt-24">
           Database Optimization Strategies
         </h3>
@@ -289,7 +295,7 @@ const BlogPost = () => {
       </div>
 
       {/* Warning Callout */}
-      <div className="bg-destructive/10 border-l-4 border-destructive p-6 rounded-r-lg flex gap-4 animate-fade-in">
+      <div className="bg-destructive/10 border-l-4 border-destructive p-6 rounded-r-lg flex gap-4">
         <AlertCircle className="h-6 w-6 text-destructive shrink-0 mt-1" />
         <div>
           <h4 className="font-semibold text-foreground mb-2">Common Pitfall</h4>
@@ -300,12 +306,12 @@ const BlogPost = () => {
       </div>
 
       {/* Blockquote */}
-      <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 italic text-lg text-muted-foreground animate-fade-in">
+      <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 italic text-lg text-muted-foreground">
         "Premature optimization is the root of all evil." — Donald Knuth
       </blockquote>
 
       {/* Lists and More Content */}
-      <div className="space-y-6 animate-fade-in">
+      <div className="space-y-6">
         <h3 id="best-practices" className="text-2xl md:text-3xl font-bold text-foreground scroll-mt-24">
           Essential Best Practices
         </h3>
@@ -354,7 +360,7 @@ const BlogPost = () => {
       </div>
 
       {/* Another Code Example */}
-      <div className="space-y-4 animate-fade-in">
+      <div className="space-y-4">
         <h3 id="caching-implementation" className="text-2xl md:text-3xl font-bold text-foreground scroll-mt-24">
           Implementing Redis Caching
         </h3>
@@ -388,7 +394,7 @@ const BlogPost = () => {
       </div>
 
       {/* Info Box */}
-      <div className="bg-primary/10 border-l-4 border-primary p-6 rounded-r-lg flex gap-4 animate-fade-in">
+      <div className="bg-primary/10 border-l-4 border-primary p-6 rounded-r-lg flex gap-4">
         <Info className="h-6 w-6 text-primary shrink-0 mt-1" />
         <div>
           <h4 className="font-semibold text-foreground mb-2">Pro Tip</h4>
@@ -399,7 +405,7 @@ const BlogPost = () => {
       </div>
 
       {/* Performance Metrics */}
-      <div className="space-y-6 animate-fade-in">
+      <div className="space-y-6">
         <h3 id="monitoring-metrics" className="text-2xl md:text-3xl font-bold text-foreground scroll-mt-24">
           Key Performance Metrics to Monitor
         </h3>
@@ -430,7 +436,7 @@ const BlogPost = () => {
       </div>
 
       {/* Conclusion */}
-      <div className="space-y-6 animate-fade-in pt-8 border-t border-border">
+      <div className="space-y-6 pt-8 border-t border-border">
         <h2 id="conclusion" className="text-3xl md:text-4xl font-bold text-foreground scroll-mt-24">
           Conclusion
         </h2>
@@ -572,17 +578,20 @@ const BlogPost = () => {
       <main className="flex-grow pt-16">
         <article>
           {/* Hero Section */}
-          <section className="py-12 md:py-20 bg-gradient-hero">
-            <div className="container mx-auto px-4">
+          <section className="relative py-16 md:py-24 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-background"></div>
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
+            
+            <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-4xl mx-auto">
-                <Button asChild variant="ghost" className="mb-6 group">
+                <Button asChild variant="ghost" className="mb-8 group">
                   <Link to="/blog">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Back to Blog
                   </Link>
                 </Button>
                 
-                <div className="space-y-6 animate-fade-in">
+                <div className="space-y-6">
                   <div className="flex flex-wrap gap-2">
                     {post.tags?.map((tag: string) => (
                       <span key={tag} className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
@@ -706,9 +715,9 @@ const BlogPost = () => {
 
                   {/* Mobile TOC Drawer */}
                   {tocOpen && (
-                    <div className="fixed inset-0 bg-background/98 backdrop-blur-sm z-30 lg:hidden animate-fade-in overflow-y-auto">
+                    <div className="fixed inset-0 bg-background z-30 lg:hidden overflow-y-auto">
                       <div className="container mx-auto px-4 py-24">
-                        <h3 className="font-bold text-xl mb-6">Table of Contents</h3>
+                        <h3 className="font-bold text-xl mb-6 text-foreground">Table of Contents</h3>
                         <nav className="space-y-3 mb-8">
                           {headings.map((heading) => (
                             <button
@@ -719,7 +728,7 @@ const BlogPost = () => {
                               } ${
                                 activeHeading === heading.text
                                   ? 'bg-primary text-primary-foreground font-medium'
-                                  : 'text-muted-foreground hover:bg-muted'
+                                  : 'text-foreground hover:bg-muted border border-border'
                               }`}
                             >
                               {heading.text}
@@ -727,7 +736,7 @@ const BlogPost = () => {
                           ))}
                         </nav>
                         <div className="border-t border-border pt-6">
-                          <h3 className="font-semibold mb-4">Share this article</h3>
+                          <h3 className="font-semibold mb-4 text-foreground">Share this article</h3>
                           <div className="flex flex-wrap gap-2">
                             <Button
                               variant="outline"
@@ -762,20 +771,11 @@ const BlogPost = () => {
                   {/* Main Content */}
                   <div className="flex-1 min-w-0">
                     <div className="max-w-3xl mx-auto space-y-8">
-                      {/* Featured Image */}
-                      <div className="rounded-2xl overflow-hidden border border-border animate-fade-in">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-auto"
-                        />
-                      </div>
-
                       {/* Article Content */}
                       <BlogContent />
 
                       {/* Author Bio */}
-                      <div className="border-t border-border pt-12 mt-16 animate-fade-in">
+                      <div className="border-t border-border pt-12 mt-16">
                         <div className="flex gap-6 items-start bg-gradient-hero p-8 rounded-2xl border border-border">
                           <img 
                             src={post.author.avatar} 
@@ -810,7 +810,7 @@ const BlogPost = () => {
                       </div>
 
                       {/* Newsletter CTA */}
-                      <div className="bg-gradient-primary text-primary-foreground p-8 md:p-12 rounded-2xl text-center space-y-6 animate-fade-in">
+                      <div className="bg-gradient-primary text-primary-foreground p-8 md:p-12 rounded-2xl text-center space-y-6">
                         <div className="space-y-2">
                           <h2 className="text-3xl md:text-4xl font-bold">Stay Updated</h2>
                           <p className="text-lg opacity-90 max-w-2xl mx-auto">
