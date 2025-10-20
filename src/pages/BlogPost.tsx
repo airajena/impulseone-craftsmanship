@@ -41,24 +41,27 @@ const BlogPost = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Calculate reading progress based on entire document
       const windowHeight = window.innerHeight;
-      const fullHeight = document.documentElement.scrollHeight;
-      const scrolled = window.scrollY;
-      const scrollableHeight = fullHeight - windowHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollableDistance = documentHeight - windowHeight;
       
-      if (scrollableHeight > 0) {
-        const progress = (scrolled / scrollableHeight) * 100;
-        setReadProgress(Math.min(Math.max(progress, 0), 100));
+      if (scrollableDistance > 0) {
+        const scrollPercentage = (scrollTop / scrollableDistance) * 100;
+        setReadProgress(Math.min(Math.max(scrollPercentage, 0), 100));
+      } else {
+        setReadProgress(100);
       }
       
-      setShowScrollTop(scrolled > 400);
+      setShowScrollTop(scrollTop > 400);
 
       // Update active heading for TOC
       const headings = document.querySelectorAll('h2[id], h3[id]');
       let current = '';
       headings.forEach((heading) => {
         const rect = heading.getBoundingClientRect();
-        if (rect.top < windowHeight / 3) {
+        if (rect.top < windowHeight / 3 && rect.top >= 0) {
           current = heading.textContent || '';
         }
       });
@@ -67,7 +70,11 @@ const BlogPost = () => {
 
     handleScroll(); // Initial call
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   // Highlight to share functionality
@@ -579,8 +586,10 @@ const BlogPost = () => {
         <article>
           {/* Hero Section */}
           <section className="relative py-16 md:py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-background"></div>
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
+            {/* Gradient Background Layers */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-background"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
             
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-4xl mx-auto">
