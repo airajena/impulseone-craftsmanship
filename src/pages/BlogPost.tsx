@@ -523,7 +523,7 @@ const BlogPost = () => {
       {/* Highlight to Share Popup */}
       {selectedText && (
         <div
-          className="fixed z-50 animate-scale-in"
+          className="fixed z-50"
           style={{
             left: `${selectionPosition.x}px`,
             top: `${selectionPosition.y}px`,
@@ -566,7 +566,7 @@ const BlogPost = () => {
       {showScrollTop && (
         <Button
           size="icon"
-          className="fixed bottom-6 right-6 z-40 h-12 w-12 rounded-full shadow-glow animate-scale-in"
+          className="fixed bottom-6 right-6 z-40 h-12 w-12 rounded-full shadow-glow"
           onClick={scrollToTop}
         >
           <ChevronUp className="h-5 w-5" />
